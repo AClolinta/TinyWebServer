@@ -3,7 +3,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-07 11:58:01
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-08 02:37:53
+ * @LastEditTime: 2023-03-08 06:10:10
  * @FilePath: /TinyWebServer/log/log.hpp
  * @Description: 日志器
  */
@@ -43,12 +43,17 @@ class Logger {
    public:
     static Logger* GetInstance();  // 单例
     static void Close();
+    
+    std::string LogLevelToString(LoggerLevel Level);
+
     void Open(std::string_view filename);  // 打开文件
 
     void Log(LoggerLevel level, std::string_view file, size_t line,
-             std::string_view format, ...);
-    void Max(int bytes);
-    void Level(int level);
+             const char* format, ...);
+    void SetMax(int bytes);
+    void SetLevel(int level);
+    void rotate();
+    
 };
 }  // namespace logger
 
