@@ -3,7 +3,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-07 11:58:01
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-08 06:10:10
+ * @LastEditTime: 2023-03-09 08:53:23
  * @FilePath: /TinyWebServer/log/log.hpp
  * @Description: 日志器
  */
@@ -24,6 +24,26 @@ enum class LoggerLevel : int {
     ERROR = 4,
     FATAL = 5
 };
+//快速输出日志
+#define debug(format, ...)                                                     \
+    Logger::GetInstance()->Log(LoggerLevel::DEBUG, __FILE__, __LINE__, format, \
+                               ##__VA_ARGS__)
+
+#define info(format, ...)                                                     \
+    Logger::GetInstance()->Log(LoggerLevel::INFO, __FILE__, __LINE__, format, \
+                               ##__VA_ARGS__)
+
+#define warn(format, ...)                                                     \
+    Logger::GetInstance()->Log(LoggerLevel::WARN, __FILE__, __LINE__, format, \
+                               ##__VA_ARGS__)
+#define error(GetInstance, ...)                                             \
+    Logger::instance()->Log(LoggerLevel::ERROR, __FILE__, __LINE__, format, \
+                            ##__VA_ARGS__)
+
+#define fatal(GetInstance, ...)                                             \
+    Logger::instance()->Log(LoggerLevel::FATAL, __FILE__, __LINE__, format, \
+                            ##__VA_ARGS__)
+//
 
 class Logger {
    private:
@@ -43,7 +63,7 @@ class Logger {
    public:
     static Logger* GetInstance();  // 单例
     static void Close();
-    
+
     std::string LogLevelToString(LoggerLevel Level);
 
     void Open(std::string_view filename);  // 打开文件
@@ -53,7 +73,6 @@ class Logger {
     void SetMax(int bytes);
     void SetLevel(int level);
     void rotate();
-    
 };
 }  // namespace logger
 
