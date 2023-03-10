@@ -3,13 +3,14 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-07 11:58:01
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-09 08:53:23
+ * @LastEditTime: 2023-03-10 10:47:15
  * @FilePath: /TinyWebServer/log/log.hpp
  * @Description: 日志器
  */
 #pragma once
 
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <string_view>
 
@@ -24,7 +25,7 @@ enum class LoggerLevel : int {
     ERROR = 4,
     FATAL = 5
 };
-//快速输出日志
+// 快速输出日志
 #define debug(format, ...)                                                     \
     Logger::GetInstance()->Log(LoggerLevel::DEBUG, __FILE__, __LINE__, format, \
                                ##__VA_ARGS__)
@@ -36,13 +37,14 @@ enum class LoggerLevel : int {
 #define warn(format, ...)                                                     \
     Logger::GetInstance()->Log(LoggerLevel::WARN, __FILE__, __LINE__, format, \
                                ##__VA_ARGS__)
-#define error(GetInstance, ...)                                             \
-    Logger::instance()->Log(LoggerLevel::ERROR, __FILE__, __LINE__, format, \
-                            ##__VA_ARGS__)
 
-#define fatal(GetInstance, ...)                                             \
-    Logger::instance()->Log(LoggerLevel::FATAL, __FILE__, __LINE__, format, \
-                            ##__VA_ARGS__)
+#define errorr(format, ...)                                                     \
+    Logger::GetInstance()->Log(LoggerLevel::ERROR, __FILE__, __LINE__, format, \
+                               ##__VA_ARGS__)
+
+#define fatal(format, ...)                                                     \
+    Logger::GetInstance()->Log(LoggerLevel::FATAL, __FILE__, __LINE__, format, \
+                               ##__VA_ARGS__)
 //
 
 class Logger {
@@ -68,7 +70,7 @@ class Logger {
 
     void Open(std::string_view filename);  // 打开文件
 
-    void Log(LoggerLevel level, std::string_view file, size_t line,
+    void Log(LoggerLevel level, const char* file, size_t line,
              const char* format, ...);
     void SetMax(int bytes);
     void SetLevel(int level);

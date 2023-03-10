@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-07 12:18:55
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-08 07:53:16
+ * @LastEditTime: 2023-03-10 10:45:21
  * @FilePath: /TinyWebServer/log/log.cpp
  * @Description: 日志器的实现
  */
@@ -76,9 +76,9 @@ std::string Logger::LogLevelToString(LoggerLevel Level) {
 
 void Logger::Open(std::string_view filename) {
     m_filename = filename;
-    m_fout.open(m_filename, std::ios::app);  // 在文件末尾添加的格式
+    m_fout.open(m_filename.c_str(), std::ios::app);  // 在文件末尾添加的格式
     if (m_fout.fail()) {
-        throw std::logic_error("OPEN LOG FILE FAILED: " + m_filename);
+        throw std::logic_error("OPEN LOG FILE FAILED:: " + m_filename);
     }
     m_fout.seekp(0,
                  std::ios::end);  // 将写入位置设置为从文件末尾开始的第 0 个字节
@@ -86,7 +86,7 @@ void Logger::Open(std::string_view filename) {
     m_len = m_fout.tellp();  // 获取 当前 put 流指针的位置
 }
 
-void Logger::Log(LoggerLevel level, std::string_view file, size_t line,
+void Logger::Log(LoggerLevel level, const char *file, size_t line,
                  const char *format, ...) {
     if (m_level > level) {
         return;  // 等级太低滚蛋
@@ -95,25 +95,29 @@ void Logger::Log(LoggerLevel level, std::string_view file, size_t line,
         throw std::logic_error("OPEN LOG FILE IN LOGGER FAILED: " + m_filename);
     }
     // 时间输出
-    std::locale::global(std::locale("zh_CN.utf8"));
+    // std::locale::global(std::locale("zh_CN.utf8"));
     time_t ticks = std::chrono::system_clock::to_time_t(
         std::chrono::system_clock::now());  // 先获取时间再转化成time_t格式
     char timestamp[32];
-    std::fill(timestamp[0], timestamp[31], '0');
+    // std::fill(timestamp[0], timestamp[31], '0');
+    memset(timestamp, 0, sizeof(timestamp));
     strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S",
              std::localtime(&ticks));
     //
 
     size_t len_ = 0;
-    std::string format_ = "%s %s %s:%u";  // 格式对应下面的timestap,
-    len_ = std::snprintf(
-        nullptr, 0, format_.c_str(), LogLevelToString(level), file,
-        line);  // 返回写入字符数组的字符数，不包括字符串的结束符,由于size=故实际并不会写入
+    std::string format_ = "%s %s %s:%d ";  // 格式对应下面的timestap,
 
+    len_ = std::snprintf(
+        NULL, 0, format_.c_str(), timestamp, LogLevelToString(level).c_str(),
+        file,
+        line);  // 返回写入字符数组的字符数，不包括字符串的结束符,由于size=故实际并不会写入
+    m_fout << "\n";
+    std::cout << len_ << std::endl;
     if (len_ > 0) {
         char *buffer_ = new char[len_ + 1];  // 缓冲区
-        std::snprintf(buffer_, len_ + 1, format_.c_str(),
-                      LogLevelToString(level), file, line);
+        std::snprintf(buffer_, len_ + 1, format_.c_str(), timestamp,
+                      LogLevelToString(level).c_str(), file, line);
         buffer_[len_] = 0;
         m_fout << buffer_;
         m_len += len_;
@@ -156,7 +160,7 @@ void Logger::SetLevel(int level) {
         case 3:
             m_level = LoggerLevel::WARN;
             break;
-        case 54:
+        case 4:
             m_level = LoggerLevel::ERROR;
             break;
         case 5:
@@ -170,11 +174,12 @@ void Logger::SetLevel(int level) {
 
 void Logger::rotate() {
     m_fout.close();
-    std::locale::global(std::locale("zh_CN.utf8"));
+    // std::locale::global(std::locale("zh_CN.utf8"));
     time_t ticks = std::chrono::system_clock::to_time_t(
         std::chrono::system_clock::now());  // 先获取时间再转化成time_t格式
     char timestamp[32];
-    std::fill(timestamp[0], timestamp[31], '0');
+    // std::fill(timestamp[0], timestamp[31], '0');
+    memset(timestamp, 0, sizeof(timestamp));
     strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S",
              std::localtime(&ticks));
     std::string filename_ = m_filename + timestamp;
