@@ -1,0 +1,13 @@
+{
+    "code": 0,
+    "message": "0",
+    "ttl": 1,
+    "data": {
+        "cover": "",
+        "channel_id": 0,
+        "channel_name": "",
+        "notify": false,
+        "ctype": 0,
+        "subscribed_count": 0
+    }
+}
