@@ -12,6 +12,7 @@ add_executable(TinyWebSever main.cpp)
 add_subdirectory(log)
 add_subdirectory(tests)
 add_subdirectory(json)
+add_subdirectory(utility)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
