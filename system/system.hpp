@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-11 03:58:53
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-11 04:20:42
+ * @LastEditTime: 2023-03-13 01:53:25
  * @FilePath: /TinyWebServer/system/system.hpp
  * @Description: System工具类
  * 
@@ -20,6 +20,7 @@ class System {
 
    private:
 
+    /// @brief 生成CoreDump文件
     void CoreDump();
 
    public:
@@ -27,6 +28,9 @@ class System {
     ~System();
 
     void Init();
+    
+    /// @brief 获取系统路径
+    /// @return std::string
     std::string GetRootPath();
 
     static void Close();
