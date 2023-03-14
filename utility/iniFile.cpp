@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-13 02:02:56
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-13 02:58:54
+ * @LastEditTime: 2023-03-14 12:01:12
  * @FilePath: /TinyWebServer/utility/iniFile.cpp
  * @Description: 读取ini文件
  */
@@ -92,35 +92,132 @@ bool IniFile::Load(std::string_view filename) {
         printf("LOADING FILE FAILED: %s IS NOT FOUND.\n", m_filename.c_str());
         return false;
     }
+
     while (std::getline(fin, line_)) {
-        line_ = trim(line_);
-        if ('[' == line_[0])  // it is a section
-        {
-            int pos = line_.find_first_of(']');
-            if (-1 != pos) {
-                name_ = trim(line_.substr(1, pos - 1));
+        line_ = trim(line_);         // 去除前后多余的空格
+        if ('[' == line_.front()) {  // 第一个符号是不是['[']
+
+            size_t end_pos_ = line_.find_first_of(']');
+            if (end_pos_ != std::string::npos) {
+                // 有匹配的右括号
+                name_ = trim(line_.substr(1, end_pos_ - 1));
                 m_inifile[name_];
             }
-        } else if ('#' == line_[0])  // it is a comment
-        {
+        } else if ('#' == line_[0]) {
+            // 注释标记
             continue;
-        } else  // it is the "key=value" line_
-        {
-            int pos = line_.find_first_of('=');
-            if (pos > 0) {
-                // add new key to the last section in the storage
-                std::string key = trim(line_.substr(0, pos));
-                std::string value =
-                    trim(line_.substr(pos + 1, line_.size() - pos - 1));
+        } else {
+            // 处理K-V对
+            size_t end_pos_ = line_.find_first_of('=');
+            if (end_pos_ > 0) {
+                // 增加新的Key
+                std::string key_ = trim(line_.substr(0, end_pos_));
+                std::string value_ = trim(
+                    line_.substr(end_pos_ + 1, line_.size() - end_pos_ - 1));
                 auto it = m_inifile.find(name_);
                 if (it == m_inifile.end()) {
                     printf("parsing error: section=%s key=%s\n", name_.c_str(),
-                           key.c_str());
+                           key_.c_str());
                     return false;
                 }
-                m_inifile[name_][key] = value;
+                m_inifile[name_][key_] = value_;
             }
         }
     }
     return true;
+}
+
+/// @brief 去除前后多余的空格
+/// @param s
+/// @return string
+std::string IniFile::trim(std::string str) {
+    if (str.empty()) {
+        return str;
+    }
+    str.erase(0, str.find_first_not_of(" "));
+    str.erase(str.find_last_not_of(" ") + 1);
+    return str;
+}
+
+/// @brief 保存INI文件
+/// @param filename
+void IniFile::Save(std::string_view filename) {
+    // 打开文件以便保存
+    std::string filename_ = filename_;
+    std::ofstream fout(filename_.c_str());
+
+    for (auto it = m_inifile.begin(); it != m_inifile.end(); ++it) {
+        // 写入一行
+        fout << "[" << it->first << "]" << std::endl;
+        for (auto iter = it->second.begin();
+             iter != it->second.end(); ++iter) {
+            // 写入K-V对
+            fout << iter->first << " = " << (std::string)iter->second << std::endl;
+        }
+        fout << std::endl;
+    }
+}
+
+void IniFile::Show() {
+
+    for (auto it = m_inifile.begin(); it != m_inifile.end(); ++it) {
+        //
+        std::cout << "[" << it->first << "]" << std::endl;
+        for ( auto iter = it->second.begin(); iter != it->second.end(); ++iter) {
+            // 
+            std::cout << iter->first << " = " << (std::string)iter->second
+                      << std::endl;
+        }
+        std::cout << std::endl;
+    }
+}
+
+void IniFile::Clear() { m_inifile.clear(); }
+
+bool IniFile::Has(const std::string &section) {
+    return (m_inifile.find(section) != m_inifile.end());
+}
+
+bool IniFile::Has(const std::string &section, const std::string &key) {
+    auto it = m_inifile.find(section);
+    if (it != m_inifile.end()) {
+        return (it->second.find(key) != it->second.end());
+    }
+    return false;
+}
+
+Value &IniFile::Get(const std::string &section, const std::string &key) {
+    return m_inifile[section][key];
+}
+
+void IniFile::Set(const std::string &section, const std::string &key, bool value) {
+    m_inifile[section][key] = value;
+}
+
+void IniFile::Set(const std::string &section, const std::string &key,
+                  int value) {
+    m_inifile[section][key] = value;
+}
+
+void IniFile::Set(const std::string &section, const std::string &key,
+                  double value) {
+    m_inifile[section][key] = value;
+}
+
+void IniFile::Set(const std::string &section, const std::string &key,
+                  const std::string &value) {
+    m_inifile[section][key] = value;
+}
+
+void IniFile::Remove(const std::string &section) {
+    auto it = m_inifile.find(section);
+    if (it != m_inifile.end()) m_inifile.erase(it);
+}
+
+void IniFile::Remove(const std::string &section, const std::string &key) {
+    auto it = m_inifile.find(section);
+    if (it != m_inifile.end()) {
+        Section::iterator iter = it->second.find(key);
+        if (iter != it->second.end()) it->second.erase(iter);
+    }
 }

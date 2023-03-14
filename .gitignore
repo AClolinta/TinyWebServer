@@ -1,1 +1,4 @@
 /build
+SetProxy.sh
+.gitignore
+UnSetProxy.sh

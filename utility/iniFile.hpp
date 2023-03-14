@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-13 02:03:51
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-13 02:42:05
+ * @LastEditTime: 2023-03-14 11:45:41
  * @FilePath: /TinyWebServer/utility/iniFile.hpp
  * @Description: 读取ini文件
  */
@@ -18,7 +18,7 @@
 namespace aclolinta {
 namespace utility {
 
-/// @brief 处理值
+/// @brief 值处理
 class Value {
    private:
     /* data */
@@ -57,7 +57,7 @@ class IniFile {
     void Clear();
 
     // read values in different formats
-    Value &get(const std::string &section, const std::string &key);
+    Value &Get(const std::string &section, const std::string &key);
 
     // Set values in different formats
     void Set(const std::string &section, const std::string &key, bool value);
