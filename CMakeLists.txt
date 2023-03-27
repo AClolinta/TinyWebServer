@@ -14,6 +14,7 @@ add_subdirectory(tests)
 add_subdirectory(json)
 add_subdirectory(utility)
 add_subdirectory(xml)
+add_subdirectory(thread)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
