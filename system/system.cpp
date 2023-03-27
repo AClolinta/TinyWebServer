@@ -2,11 +2,10 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-13 01:59:50
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-21 12:16:24
+ * @LastEditTime: 2023-03-27 03:37:21
  * @FilePath: /TinyWebServer/system/system.cpp
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
- * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
+ * @Description: 
+ * */
 #include "system.hpp"
 
 using namespace aclolinta;
@@ -45,11 +44,11 @@ std::string System::GetRootPath() {
     memset(path, 0, 1024);
     ssize_t cnt = readlink("/proc/self/exe", path, sizeof(path));
 
-    if( cnt <0 || cnt>=sizeof(path)){
-        return "";//异常
+    if (cnt < 0 || cnt >= sizeof(path)) {
+        return "";  // 异常
     }
 
-    for(ssize_t i = cnt; i>=0 ;--i){
+    for (ssize_t i = cnt; i >= 0; --i) {
         if (path[i] == '/') {
             path[i] = '\0';
             break;
