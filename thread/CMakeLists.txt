@@ -1,7 +1,4 @@
-add_library(utility
-            iniFile.hpp
-            iniFile.cpp
-            Singleton.hpp
+add_library(
              
              
             )
