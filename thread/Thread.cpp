@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-29 13:05:10
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-30 08:48:42
+ * @LastEditTime: 2023-03-30 13:15:04
  * @FilePath: /TinyWebServer/thread/Thread.cpp
  * @Description: 线程框架的实现
  *  */
@@ -31,4 +31,30 @@ void Thread::Start() {
 void Thread::Stop() {
     pthread_exit(PTHREAD_CANCELED);
     // 当一个线程被强制终止执行时，它会返回 PTHREAD_CANCELED 这个宏
-    }
+}
+
+/// @brief 线程执行的第一个函数
+/// @param ptr
+/// @return Thread*
+void* Thread::ThreadFunc(void* ptr) {
+    // 执行代码与线程对象分离
+    Thread* thread = (Thread*)ptr;
+    thread->Run();
+    return ptr;
+}
+
+/// @brief 设置具体任务
+/// @param task 
+void Thread::SetTask(Task* task) {
+    m_mutex.Lock();
+    m_task = task;
+    m_cond.Signal();
+    m_mutex.Unlock();
+}
+
+/// @brief 获取具体的任务，获取时上锁，避免脏数据
+/// @return Task*
+Task* Thread::GetTask(){
+    AutoLock lock(&m_mutex);
+    return m_task;
+}
