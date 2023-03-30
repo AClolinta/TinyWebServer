@@ -35,7 +35,7 @@ class Thread {
    protected:
     pthread_t m_tid;   // 线程ID
     Task* m_task;      // 具体任务
-    Mutex m_mutes;     // 互斥信号量
+    Mutex m_mutex;     // 互斥信号量
     Condition m_cond;  // 线程通讯工具
 };
 }  // namespace thread
