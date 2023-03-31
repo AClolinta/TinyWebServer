@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:22:02
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-31 12:10:06
+ * @LastEditTime: 2023-03-31 12:20:57
  * @FilePath: /TinyWebServer/thread/ThreadPool.cpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
  * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
@@ -10,7 +10,7 @@
 #include "ThreadPool.hpp"
 
 #include "../log/log.hpp"
-#include "WorkerThread.hpp"
+#include "WorkThread.hpp"
 
 using namespace aclolinta::logger;
 using namespace aclolinta::thread;
@@ -90,6 +90,7 @@ size_t ThreadPool::GetBusyThreadCount() {
 }
 
 void ThreadPool::Assign(Task* task) {
+    //给线程池内的线程分配任务
     if (nullptr == task) {
         errorr("UNEXPECT TASK ASSIGN IN THREADPOOL");
         return;

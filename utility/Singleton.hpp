@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-11 03:57:23
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-11 04:06:20
+ * @LastEditTime: 2023-03-31 12:47:10
  * @FilePath: /TinyWebServer/utility/Singleton.hpp
  * @Description: 单例模板，使用std::aexit来回收，必须实现Close删除器！
  */
@@ -15,8 +15,9 @@ template <typename T>
 class Singleton {
    public:
     static T *Getinstance() {
-        if (m_instance == nullptr) {m_instance = new T();
-            std::atexit(T::Close);
+        if (m_instance == nullptr) {
+            m_instance = new T();
+            // std::atexit(T::Close);
         };
         return m_instance;
     }

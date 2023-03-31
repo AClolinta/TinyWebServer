@@ -2,11 +2,11 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-31 02:34:47
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-31 04:14:04
+ * @LastEditTime: 2023-03-31 12:24:32
  * @FilePath: /TinyWebServer/thread/WorkerThread.cpp
  * @Description: 具体的工作线程类
  *  */
-#include "WorkerThread.hpp"
+#include "WorkThread.hpp"
 
 #include "../log/log.hpp"
 using namespace aclolinta::logger;
@@ -58,7 +58,11 @@ void WorkThread::Run() {
         m_task->Destory();
         m_task = nullptr;
 
-        Singleton<>
+        Singleton<ThreadPool>::Getinstance()->Move2IdleList(this);
+
+        rc = pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, &old_state);
+        pthread_testcancel();
 
     }
+    pthread_cleanup_pop(1);
 }
