@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:21:56
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-30 13:28:34
+ * @LastEditTime: 2023-03-31 04:14:03
  * @FilePath: /TinyWebServer/thread/ThreadPool.hpp
  * @Description: 线程池
  * */
@@ -30,11 +30,23 @@ class ThreadPool {
     Mutex m_mutex_busy;
 
     Condition m_cond_idle;
-    Condition m_busy_idle;
+    Condition m_cond_busy;
 
    public:
     ThreadPool(/* args */);
     ~ThreadPool();
+
+   public:
+    void Creat(int thread_count);
+    Thread* GetIdleThread();
+
+    void Move2IdleList(Thread *thread);
+    void Move2BusyList(Thread *thread);
+
+    int GetIdleThreadCount();
+    int GetBusyThreadCount();
+
+    void Assign(Task* task);
 };
 
 }  // namespace thread
