@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:21:56
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-31 04:14:03
+ * @LastEditTime: 2023-03-31 12:10:24
  * @FilePath: /TinyWebServer/thread/ThreadPool.hpp
  * @Description: 线程池
  * */
@@ -21,7 +21,7 @@ namespace thread {
 class ThreadPool {
    private:
     /* data */
-    int m_threads;//Thread count
+    size_t m_threads;//Thread count
 
     std::set<Thread *> m_list_idle;//Idle thread
     std::set<Thread *> m_list_busy;//busy thread
@@ -43,8 +43,8 @@ class ThreadPool {
     void Move2IdleList(Thread *thread);
     void Move2BusyList(Thread *thread);
 
-    int GetIdleThreadCount();
-    int GetBusyThreadCount();
+    size_t GetIdleThreadCount();
+    size_t GetBusyThreadCount();
 
     void Assign(Task* task);
 };
