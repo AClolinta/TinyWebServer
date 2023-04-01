@@ -2,10 +2,10 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-11 03:57:23
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-31 12:47:10
+ * @LastEditTime: 2023-04-01 03:11:29
  * @FilePath: /TinyWebServer/utility/Singleton.hpp
- * @Description: 单例模板，使用std::aexit来回收，必须实现Close删除器！
- */
+ * @Description: 单例模板
+ * */
 #pragma once
 
 namespace aclolinta {

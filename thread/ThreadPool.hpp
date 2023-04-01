@@ -46,7 +46,7 @@ class ThreadPool {
     size_t GetIdleThreadCount();
     size_t GetBusyThreadCount();
 
-    void Assign(Task* task);
+    void Assign(Task* task); //分配任务
 };
 
 }  // namespace thread

@@ -3,7 +3,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:18:57
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-31 12:56:11
+ * @LastEditTime: 2023-04-01 03:49:02
  * @FilePath: /TinyWebServer/thread/TaskDispatcher.hpp
  * @Description: 任务分发类
  * */
@@ -12,7 +12,7 @@
 #include <pthread.h>
 #include <signal.h>
 
-#include <vector>
+#include <list>
 
 #include "Task.hpp"
 #include "Thread.hpp"
@@ -23,7 +23,7 @@ namespace thread {
 class TaskDispatcher : public Thread {
    private:
     /* data */
-    std::vector<Task*> m_tasks;
+    std::list<Task*> m_tasks;
 
    public:
     TaskDispatcher(/* args */);
@@ -31,8 +31,8 @@ class TaskDispatcher : public Thread {
 
    public:
     void Init(size_t threads);
-    void Assign(Task* task);
-    void Handle(Task* task);
+    void Assign(Task* task);  // 将任务添加到任务列表中。
+    void Handle(Task* task);  // 处理指定的任务。
 
     virtual void Run();
 };
