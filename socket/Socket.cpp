@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-02 03:19:50
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-02 09:12:39
+ * @LastEditTime: 2023-04-02 09:16:05
  * @FilePath: /TinyWebServer/socket/Socket.cpp
  * @Description: Socket的实现 */
 #include "Socket.hpp"
@@ -166,7 +166,7 @@ bool Socket::SetLinger(bool active, size_t seconds){
 }
 
 bool Socket::SetKeepAlive() {
-    // 设置链接存活时间
+    // 允许使用心跳包
      size_t flag = 1;
      if (setsockopt(m_sockfd, SOL_SOCKET, SO_KEEPALIVE, &flag, sizeof(flag)) <
          0) {
@@ -177,7 +177,7 @@ bool Socket::SetKeepAlive() {
     return true;
 }
 bool Socket::SetReuseAddr() {
-    // 在同一端口上重用先前使用的地址。
+    // 当服务端出现timewait状态的链接时，确保server能够重启成功。
     size_t flag = 1;
     if (setsockopt(m_sockfd, SOL_SOCKET, SO_REUSEADDR, &flag, sizeof(flag)) <
         0) {
@@ -188,6 +188,7 @@ bool Socket::SetReuseAddr() {
     return true;
 }
 bool Socket::SetReusePort() {
+    // 多进程或者多线程创建多个绑定同一个ip:port的监听socket
     size_t flag = 1;
     if (setsockopt(m_sockfd, SOL_SOCKET, SO_REUSEPORT, &flag, sizeof(flag)) <
         0) {
