@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-02 02:53:21
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-02 04:04:14
+ * @LastEditTime: 2023-04-02 09:12:44
  * @FilePath: /TinyWebServer/socket/Socket.hpp
  * @Description: Socket的实现
  * */
@@ -40,9 +40,9 @@ class Socket {
     bool SetSendBuffer(size_t size);
     bool SetRecvBuffer(size_t size);
     bool SetLinger(bool active, size_t seconds);
-    bool SetKeep_alive();
-    bool SetReuse_addr();
-    bool SetReuse_port();
+    bool SetKeepAlive();
+    bool SetReuseAddr();
+    bool SetReusePort();
 
    protected:
     std::string m_ip;
