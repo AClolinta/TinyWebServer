@@ -2,9 +2,9 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-27 03:42:28
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-27 04:01:03
+ * @LastEditTime: 2023-04-02 02:40:48
  * @FilePath: /TinyWebServer/thread/Mutex.hpp
- * @Description: Mutex的实现
+ * @Description: Mutex互斥锁的实现
  * */
 #pragma once
 #include <pthread.h>

@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-29 13:05:10
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-30 13:15:04
+ * @LastEditTime: 2023-04-02 02:39:18
  * @FilePath: /TinyWebServer/thread/Thread.cpp
  * @Description: 线程框架的实现
  *  */
@@ -48,7 +48,7 @@ void* Thread::ThreadFunc(void* ptr) {
 void Thread::SetTask(Task* task) {
     m_mutex.Lock();
     m_task = task;
-    m_cond.Signal();
+    m_cond.Signal();//唤醒WorkTHread中的等待，执行RUN方法
     m_mutex.Unlock();
 }
 

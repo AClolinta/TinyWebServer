@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:22:02
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-31 12:20:57
+ * @LastEditTime: 2023-04-02 02:38:03
  * @FilePath: /TinyWebServer/thread/ThreadPool.cpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
  * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
@@ -101,7 +101,7 @@ void ThreadPool::Assign(Task* task) {
     Thread* thread_ = GetIdleThread();
     if (nullptr != thread_) {
         Move2BusyList(thread_);
-        thread_->SetTask(task);
+        thread_->SetTask(task);//分配任务给线程
     } else {
         errorr("THREAD IS NULL, ASSIGN A TASK FAILED");
     }
