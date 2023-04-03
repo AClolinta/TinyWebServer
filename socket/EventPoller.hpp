@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 02:19:12
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-03 03:11:53
+ * @LastEditTime: 2023-04-03 12:33:24
  * @FilePath: /TinyWebServer/socket/EventPoller.hpp
  * @Description: Epoll真难啊
  * */
@@ -74,7 +74,7 @@ class EventPoller {
 
    protected:
     int m_epfd;                    // epoll句柄
-    int m_max_connect;         // 最大连接数
+    int m_max_connect;             // 最大连接数
     struct epoll_event* m_events;  // 事件集
     bool m_et;                     // 否是为ET模式
 };
