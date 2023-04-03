@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:21:56
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-31 12:10:24
+ * @LastEditTime: 2023-04-03 13:57:40
  * @FilePath: /TinyWebServer/thread/ThreadPool.hpp
  * @Description: 线程池
  * */
@@ -13,8 +13,10 @@
 #include "AutoLock.hpp"
 #include "Condition.hpp"
 #include "Mutex.hpp"
-#include "Task.hpp"
+#include "../task/Task.hpp"
 #include "Thread.hpp"
+
+using namespace aclolinta::task;
 
 namespace aclolinta {
 namespace thread {

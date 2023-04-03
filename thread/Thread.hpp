@@ -2,17 +2,18 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-27 03:40:47
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-29 13:10:02
+ * @LastEditTime: 2023-04-03 13:55:04
  * @FilePath: /TinyWebServer/thread/Thread.hpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
- * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
+ * 进行设置: Thread的基类 */
 #pragma once
 #include <pthread.h>
 
 #include "Condition.hpp"
 #include "Mutex.hpp"
-#include "Task.hpp"
+#include "../task/Task.hpp"
+
+using namespace aclolinta::task;
 
 namespace aclolinta {
 namespace thread {
