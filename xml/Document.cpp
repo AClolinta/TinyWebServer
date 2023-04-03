@@ -6,7 +6,6 @@
 #include <sstream>
 #include <stdexcept>
 
-
 using namespace aclolinta::xml;
 
 Document::Document() : m_idx(0) {}
