@@ -54,6 +54,18 @@
         "variant": "cpp",
         "list": "cpp",
         "set": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "condition_variable": "cpp",
+        "forward_list": "cpp",
+        "buffer": "cpp",
+        "executor": "cpp",
+        "io_context": "cpp",
+        "netfwd": "cpp",
+        "socket": "cpp",
+        "future": "cpp",
+        "mutex": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     }
 }

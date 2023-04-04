@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-11 03:57:23
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-03 11:49:01
+ * @LastEditTime: 2023-04-04 11:42:50
  * @FilePath: /TinyWebServer/utility/Singleton.hpp
  * @Description: 线程安全的单例模板
  * */
@@ -26,7 +26,7 @@ class Singleton {
 
    private:
     Singleton() {}
-    Singleton(const Singleton<T> &);
+    Singleton(const Singleton<T> &) = delete;
     Singleton<T> &operator=(const Singleton<T> &);
     ~Singleton() {}
 

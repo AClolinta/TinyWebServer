@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-02 02:53:21
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-02 09:12:44
+ * @LastEditTime: 2023-04-04 12:17:17
  * @FilePath: /TinyWebServer/socket/Socket.hpp
  * @Description: Socket的实现
  * */
@@ -21,6 +21,8 @@
 namespace aclolinta {
 namespace socket {
 class Socket {
+    friend class SocketHandler;
+
    public:
     Socket(/* args */);
     Socket(std::string_view ip, size_t port);
@@ -28,7 +30,7 @@ class Socket {
 
    public:
     bool Bind(std::string_view ip, size_t port);     // 绑定端口
-    bool Listen(int backlog);                     // 监听
+    bool Listen(int backlog);                        // 监听
     bool Connect(std::string_view ip, size_t port);  // 链接
     bool Close();
 
