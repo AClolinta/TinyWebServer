@@ -3,7 +3,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:18:57
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-03 13:58:09
+ * @LastEditTime: 2023-04-04 13:39:09
  * @FilePath: /TinyWebServer/thread/TaskDispatcher.hpp
  * @Description: 任务分发类
  * */
@@ -15,8 +15,8 @@
 #include <list>
 
 #include "../task/Task.hpp"
-#include "Thread.hpp"
-#include "ThreadPool.hpp"
+#include "../thread/Thread.hpp"
+#include "../thread/ThreadPool.hpp"
 
 using namespace aclolinta::task;
 

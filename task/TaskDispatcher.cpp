@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:19:03
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-01 03:32:29
+ * @LastEditTime: 2023-04-04 14:01:44
  * @FilePath: /TinyWebServer/thread/TaskDispatcher.cpp
  * @Description:  任务分配器具体实现
  * */
@@ -19,6 +19,11 @@ TaskDispatcher::TaskDispatcher(){};
 
 TaskDispatcher::~TaskDispatcher(){};
 
+/**
+ * @description: 启动任务分配器
+ * @param {size_t} threads 线程数量
+ * @return {*}
+ */
 void TaskDispatcher::Init(size_t threads) {
     Singleton<ThreadPool>::Getinstance()->Creat(threads);
     this->Start();
