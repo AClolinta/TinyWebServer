@@ -2,9 +2,10 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-01 12:16:59
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-01 12:38:10
+ * @LastEditTime: 2023-05-02 11:59:03
  * @FilePath: /TinyWebServer/engine/PluginHelper.cpp
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
+ * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 #include "PluginHelper.hpp"
 using namespace aclolinta::engine;
@@ -42,6 +43,20 @@ void PluginHelper::Load(std::string_view plugin) {
     }
     m_plugin[plugin.data()] = handle_;
 }
-void PluginHelper::Unload(std::string_view plugin);
+
+void PluginHelper::Unload(std::string_view plugin) {
+    if (plugin.empty()) {
+        errorr("LOAD PLUGIN FAILURE: PLUGIN IS EMPTY");
+        return;
+    }
+    auto it == m_plugin.find(plugin.data());
+    if (it == m_plugin.end()) {
+        errorr("UNLOAD PLUGIN FAILURE: PLUGIN IS NOT EXIST.");
+        return;
+    }
+    dlclose(it->second);
+    m_plugin.erase(it);
+}
+
 void* PluginHelper::Get(std::string_view plugin, std::string_view symbol);
 void PluginHelper::Show();
