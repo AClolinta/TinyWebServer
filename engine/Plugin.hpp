@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-01 11:47:08
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-01 12:02:44
+ * @LastEditTime: 2023-05-05 08:45:44
  * @FilePath: /TinyWebServer/engine/Plugin.hpp
  * @Description: Plugin类
  */
@@ -29,6 +29,8 @@ class Plugin {
 
     void SetSwitch(bool flag) { is_switch = flag; };
     bool GetSwitch() { return is_switch; };
+
+    virtual bool Run(Context& ctx) = 0;
 
    protected:
     std::string m_name;

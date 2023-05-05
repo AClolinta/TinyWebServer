@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-01 12:16:59
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-05 02:34:18
+ * @LastEditTime: 2023-05-05 09:12:07
  * @FilePath: /TinyWebServer/engine/PluginHelper.cpp
  * @Description: 插件辅助工具
  
@@ -58,6 +58,10 @@ void PluginHelper::Unload(std::string_view plugin) {
     m_plugin.erase(it);
 }
 
+/// @brief 获取每个插件对象的 symbol 函数指针
+/// @param plugin 插件名称
+/// @param symbol 插件内的函数名称
+/// @return symbol 的函数指针
 void* PluginHelper::Get(std::string_view plugin, std::string_view symbol) {
     auto it = m_plugin.find(plugin.data());
     if (it == m_plugin.end()) {
