@@ -2,10 +2,10 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-05 02:40:20
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-05 04:13:01
+ * @LastEditTime: 2023-05-05 12:17:38
  * @FilePath: /TinyWebServer/engine/Work.hpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
- * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * 进行设置: 插件的管理和运行
  */
 #pragma once
 
