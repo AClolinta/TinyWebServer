@@ -2,11 +2,11 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-01 12:16:59
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-02 11:59:03
+ * @LastEditTime: 2023-05-05 02:34:18
  * @FilePath: /TinyWebServer/engine/PluginHelper.cpp
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
- * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
+ * @Description: 插件辅助工具
+ 
+ */ 
 #include "PluginHelper.hpp"
 using namespace aclolinta::engine;
 
@@ -49,7 +49,7 @@ void PluginHelper::Unload(std::string_view plugin) {
         errorr("LOAD PLUGIN FAILURE: PLUGIN IS EMPTY");
         return;
     }
-    auto it == m_plugin.find(plugin.data());
+    auto it = m_plugin.find(plugin.data());
     if (it == m_plugin.end()) {
         errorr("UNLOAD PLUGIN FAILURE: PLUGIN IS NOT EXIST.");
         return;
@@ -58,5 +58,28 @@ void PluginHelper::Unload(std::string_view plugin) {
     m_plugin.erase(it);
 }
 
-void* PluginHelper::Get(std::string_view plugin, std::string_view symbol);
-void PluginHelper::Show();
+void* PluginHelper::Get(std::string_view plugin, std::string_view symbol) {
+    auto it = m_plugin.find(plugin.data());
+    if (it == m_plugin.end()) {
+        Load(plugin.data());
+        it = m_plugin.find(plugin.data());
+
+        if (it == m_plugin.end()) {
+            errorr("LOAD PLUGIN FAILURE IN PluginHelper::Get: %s",
+                   plugin.data());
+            return nullptr;
+        }
+    }
+
+    void* func = dlsym(it->second, symbol.data());
+    if (it == m_plugin.end()) {
+        errorr("PLUGIN: %s, UNDEFINED SYMBOL: %s", plugin.data(),
+               symbol.data());
+    }
+    return func;
+};
+void PluginHelper::Show() {
+    for (auto it = m_plugin.begin(); it != m_plugin.end(); ++it) {
+        debug("PLUGIN: NAME=%s HANDLE=%x", it->first.c_str(), it->second);
+    }
+}

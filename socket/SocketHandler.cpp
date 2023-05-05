@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 13:09:31
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-04 13:09:54
+ * @LastEditTime: 2023-05-05 04:13:29
  * @FilePath: /TinyWebServer/socket/SocketHandler.cpp
  * @Description: 基于事件轮询模型的 Socket 服务器
  *  */
@@ -21,7 +21,7 @@ using namespace aclolinta::utility;
 #include "../thread/AutoLock.hpp"
 using namespace aclolinta::task;
 
-#include "../thread/TaskDispatcher.hpp"
+#include "../task/TaskDispatcher.hpp"
 #include "ServerSocket.hpp"
 using namespace aclolinta::socket;
 
@@ -106,7 +106,7 @@ void SocketHandler::Handle(size_t max_connect, size_t wait_time) {
                 } else if(m_epoll->m_events[i].events & EPOLLIN){
                     debug("SOCKET READ EVENT");
                     this->Detach(socket_);
-                    Task * task = TaskFactory::Create(socket_);
+                    Task* task = TaskFactory::Create(socket_);
                     Singleton<TaskDispatcher>::Getinstance()->Assign(task);
                 }
             }
