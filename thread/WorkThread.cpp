@@ -57,7 +57,7 @@ void WorkThread::Run() {
         rc = pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, &old_state);
         //执行线程的逻辑
         m_task->Run();
-        m_task->Destory();
+        m_task->Destroy();
         m_task = nullptr;
 
         Singleton<ThreadPool>::Getinstance()->Move2IdleList(this);

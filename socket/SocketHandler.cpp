@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 13:09:31
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-05 04:13:29
+ * @LastEditTime: 2023-05-05 14:04:09
  * @FilePath: /TinyWebServer/socket/SocketHandler.cpp
  * @Description: 基于事件轮询模型的 Socket 服务器
  *  */
@@ -41,6 +41,11 @@ void SocketHandler::Listen(std::string_view ip, size_t port) {
     m_server = new ServerSocket(ip, port);
 }
 
+/**
+ * @description: 将Socket添加到事件轮询器中
+ * @param {Socket*} socket
+ * @return {*}
+ */
 void SocketHandler::Attach(Socket* socket) {
     AutoLock lock(&m_mutex);
     m_epoll->Add(socket->m_sockfd, static_cast<void*>(socket),

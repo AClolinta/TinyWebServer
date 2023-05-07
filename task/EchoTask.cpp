@@ -44,7 +44,7 @@ void EchoTask::Run(){
     }
 }
 
-void EchoTask::Destory() {
+void EchoTask::Destroy() {
     debug("ECHO TASK DESTROY");
     delete this;
 }
