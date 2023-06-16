@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-01 11:47:08
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-05 12:11:16
+ * @LastEditTime: 2023-06-16 09:10:42
  * @FilePath: /TinyWebServer/engine/Plugin.hpp
  * @Description: Plugin类的基本定义
  */
@@ -38,8 +38,8 @@ class Plugin {
 };
 
 #define DEFINE_PLUGIN(classType)                                           \
-    extern "C" Plugin* create() { return new (std::nothrow) classType(); } \
-    extern "C" void destroy(Plugin* p) {                                   \
+    extern "C" Plugin* Create() { return new (std::nothrow) classType(); } \
+    extern "C" void Destroy(Plugin* p) {                                   \
         delete p;                                                          \
         p = NULL;                                                          \
     }
