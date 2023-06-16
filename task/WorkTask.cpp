@@ -4,8 +4,7 @@
  * @LastEditors: AClolinta AClolinta@gmail.com
  * @LastEditTime: 2023-05-07 04:28:59
  * @FilePath: /TinyWebServer/task/WorkTask.cpp
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
- * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: 每个任务的安全性检查，随后送入
  */
 #include "WorkTask.hpp"
 
@@ -38,9 +37,9 @@ void WorkTask::Run() {
     memset(&msg_head_, 0, sizeof(msg_head_));
 
     int len_ = socket_->Recv((char*)(&msg_head_), sizeof(msg_head_));
-    //接受消息头部并且检查
-    // 如果 len 为 0，表示套接字已被对方关闭，输出错误日志，并从 handler
-    // 中移除该套接字。
+    // 接受消息头部并且检查
+    //  如果 len 为 0，表示套接字已被对方关闭，输出错误日志，并从 handler
+    //  中移除该套接字。
     if (0 == len_) {
         errorr("SOCKET CLOSED BY PEER");
         handle_->Remove(socket_);
@@ -89,13 +88,13 @@ void WorkTask::Run() {
     }
     // 检查消息体长度是否大于等于 recv_buff_size，如果是，则输出错误日志，并从
     // handler 中移除该套接字。
-    if(msg_head_.len>= static_cast<uint32_t>(recv_buff_size)){
+    if (msg_head_.len >= static_cast<uint32_t>(recv_buff_size)) {
         errorr("UNEXPECT RECV MSG BODY LEN: %d, RECV_BUFF_SIZE IS : %d",
-              msg_head_.len, recv_buff_size);
+               msg_head_.len, recv_buff_size);
         handle_->Remove(socket_);
         return;
     }
-    //安全性检查完成
+    // 安全性检查完成
 
     char buf[recv_buff_size];
     memset(buf, 0, recv_buff_size);
@@ -119,25 +118,25 @@ void WorkTask::Run() {
     }
     if (len_ != (int)(msg_head_.len)) {
         errorr("RECV MSG BODY ERROR LENGTH: %d, BODY: %s, ERRNO: %d", len_, buf,
-              errno);
+               errno);
         handle_->Remove(socket_);
         return;
     }
     info("RECV MSG BODY LEN: %d, MSG DATA: %s", len_, buf);
 
-    WorkFlow * workflow_ = Singleton<WorkFlow>::Getinstance();
+    WorkFlow* workflow_ = Singleton<WorkFlow>::Getinstance();
     ostringstream oss;
     oss << static_cast<int>(msg_head_.cmd);
     string_view work_ = oss.str();
     string_view input_ = buf;
     string output_;
 
-    workflow_->Run(work_,input_, output_);
+    workflow_->Run(work_, input_, output_);
     socket_->Send(output_.c_str(), output_.size());
     handle_->Attach(socket_);
-    }
+}
 
-    void WorkTask::Destroy() {
+void WorkTask::Destroy() {
     debug("WORK JOB DESTORY");
     delete this;
-    }
+}
