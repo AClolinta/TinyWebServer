@@ -40,6 +40,6 @@ void Server::Start() {
 
     // 初始化Socket handler
     SocketHandler* socket_handler = Singleton<SocketHandler>::Getinstance();
-    socket_handler->Listen(m_ip,m_port);
-    socket_handler->Handle(m_connects,m_wait_time);
+    socket_handler->Listen(m_ip, m_port);
+    socket_handler->Handle(m_connects, m_wait_time);
 }

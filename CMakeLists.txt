@@ -9,14 +9,21 @@ enable_testing()
 
 add_executable(TinyWebSever main.cpp)
 
-add_subdirectory(log)
-add_subdirectory(tests)
+add_subdirectory(engine)
 add_subdirectory(json)
+
+add_subdirectory(log)
+add_subdirectory(plugin)
+add_subdirectory(server)
+add_subdirectory(socket)
+add_subdirectory(system)
+add_subdirectory(task)
+add_subdirectory(thread)
 add_subdirectory(utility)
 add_subdirectory(xml)
-add_subdirectory(thread)
-add_subdirectory(engine)
-add_subdirectory(plugin)
+
+add_subdirectory(tests)
+
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

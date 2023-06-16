@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-07 03:35:51
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-07 04:28:59
+ * @LastEditTime: 2023-06-16 11:44:33
  * @FilePath: /TinyWebServer/task/WorkTask.cpp
  * @Description: 每个任务的安全性检查，随后送入
  */
@@ -98,7 +98,7 @@ void WorkTask::Run() {
 
     char buf[recv_buff_size];
     memset(buf, 0, recv_buff_size);
-    int len_ = socket_->Recv(buf, msg_head_.len);
+    len_ = socket_->Recv(buf, msg_head_.len);
 
     if (len_ == -1 && errno == EAGAIN) {
         errorr("SOCKET RECV LEN: %d, ERROR MSG: EAGAIN ERRNO: %d", len_, errno);

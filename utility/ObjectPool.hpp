@@ -2,10 +2,9 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 12:06:35
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-03 12:32:26
+ * @LastEditTime: 2023-06-16 11:45:49
  * @FilePath: /TinyWebServer/utility/ObjectPool.hpp
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
- * 进行设置: 对象池
+ * @Description:  对象池
  *  */
 #pragma once
 
@@ -54,7 +53,7 @@ void ObjectPool<T>::Init(size_t max) {
     AutoLock lock(&m_mutex);
     for (int i = 0; i < max; ++i) {
         T* ptr = new T();
-        m_pool.emplace(ptr);
+        m_pool.push_back(ptr);
     }
 }
 

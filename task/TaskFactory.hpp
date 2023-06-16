@@ -22,7 +22,7 @@ namespace aclolinta {
 namespace task {
 class TaskFactory {
    public:
-     static Task * Creat(Socket * socket){
+     static Task * Create(Socket * socket){
         return new WorkTask(socket);
      }
 

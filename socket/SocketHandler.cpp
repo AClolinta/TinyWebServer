@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 13:09:31
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-05 14:04:09
+ * @LastEditTime: 2023-06-16 11:45:25
  * @FilePath: /TinyWebServer/socket/SocketHandler.cpp
  * @Description: 基于事件轮询模型的 Socket 服务器
  *  */
@@ -19,6 +19,7 @@ using namespace aclolinta::utility;
 
 #include "../task/Task.hpp"
 #include "../thread/AutoLock.hpp"
+#include "../task/TaskFactory.hpp"
 using namespace aclolinta::task;
 
 #include "../task/TaskDispatcher.hpp"

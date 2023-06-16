@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 13:29:53
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-05 12:16:32
+ * @LastEditTime: 2023-06-16 09:21:40
  * @FilePath: /TinyWebServer/engine/WorkFlow.hpp
  * @Description: 工作流
  */
@@ -39,9 +39,6 @@ class WorkFlow {
     bool LoadPlugin(Work* work, Element& element);
 };
 
-WorkFlow::WorkFlow(/* args */) {}
-
-WorkFlow::~WorkFlow() {}
 
 }  // namespace engine
 }  // namespace aclolinta

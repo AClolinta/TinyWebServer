@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-27 03:27:16
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-04 13:56:31
+ * @LastEditTime: 2023-06-16 11:53:02
  * @FilePath: /TinyWebServer/server/Server.hpp
  * @Description: 服务端，处理网络部分
  */
@@ -11,7 +11,7 @@
 #include <string>
 #include <string_view>
 
-namespace aclolita {
+namespace aclolinta {
 namespace server {
 
     
@@ -37,4 +37,4 @@ class Server {
 };
 
 }  // namespace server
-}  // namespace aclolita
+}  // namespace aclolinta
