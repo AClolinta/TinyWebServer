@@ -22,7 +22,6 @@ using namespace aclolinta::system;
 using namespace aclolinta::utility;
 
 #include "../log/log.hpp"
-
 using namespace aclolinta::logger;
 
 #include "../engine/WorkFlow.hpp"
