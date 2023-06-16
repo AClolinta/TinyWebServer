@@ -2,12 +2,12 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-04 13:47:51
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-04 14:05:24
+ * @LastEditTime: 2023-06-16 12:04:04
  * @FilePath: /TinyWebServer/server/Server.cpp
  * @Description: 服务器配置
  */
 #include "Server.hpp"
-using namespace aclolita::server;
+using namespace aclolinta::server;
 
 #include "../utility/Singleton.hpp"
 using namespace aclolinta::utility;

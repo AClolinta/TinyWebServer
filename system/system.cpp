@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-13 01:59:50
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-03-27 03:37:21
+ * @LastEditTime: 2023-06-16 12:49:34
  * @FilePath: /TinyWebServer/system/system.cpp
  * @Description:
  * */
@@ -17,9 +17,16 @@ using namespace aclolinta::system;
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "../log/log.hpp"
 #include "../utility/Singleton.hpp"
 #include "../utility/iniFile.hpp"
+using namespace aclolinta::utility;
+
+#include "../log/log.hpp"
+
+using namespace aclolinta::logger;
+
+#include "../engine/WorkFlow.hpp"
+using namespace aclolinta::engine;
 
 System::System() {}
 
@@ -31,6 +38,25 @@ void System::Init() {
 
     m_root_path = GetRootPath();
     std::string logdir = m_root_path + "/log";
+
+    DIR* dp = opendir(logdir.c_str());
+    if (dp == NULL) {
+        mkdir(logdir.c_str(), 0755);
+    } else {
+        closedir(dp);
+    }
+
+    //Logger
+    Logger::GetInstance()->Open(m_root_path + "/log/main.log");
+
+    //Inifile
+    IniFile * ini = Singleton<IniFile>::Getinstance();
+    ini->Load(GetRootPath() + "/config/main.ini");
+
+    //Init WorkFolw
+    WorkFlow* workflow = Singleton<WorkFlow>::Getinstance();
+    workflow->Load(GetRootPath() + "/config/workflow.xml");
+
 }
 
 /// @brief 获取系统运行的路径
@@ -55,4 +81,16 @@ std::string System::GetRootPath() {
         }
     }
     return std::string(path);
+}
+
+void System::CoreDump(){
+    // core dump
+    struct rlimit x;
+    int ret = getrlimit(RLIMIT_CORE, &x);
+    x.rlim_cur = x.rlim_max;
+    ret = setrlimit(RLIMIT_CORE, &x);
+
+    ret = getrlimit(RLIMIT_DATA, &x);
+    x.rlim_cur = 768000000;
+    ret = setrlimit(RLIMIT_DATA, &x);
 }
