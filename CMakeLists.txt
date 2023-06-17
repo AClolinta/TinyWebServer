@@ -7,41 +7,33 @@ set(CMAKE_CXX_STANDARD 20)
 include(CTest)
 enable_testing()
 
-add_executable(TinyWebSever main.cpp)
 
-add_subdirectory(engine)
+
 add_subdirectory(json)
 add_subdirectory(log)
-add_subdirectory(plugin)
-add_subdirectory(server)
+add_subdirectory(xml)
+add_subdirectory(utility)
+
 add_subdirectory(socket)
-add_subdirectory(system)
+
 add_subdirectory(task)
 add_subdirectory(thread)
-add_subdirectory(utility)
-add_subdirectory(xml)
+add_subdirectory(server)
 
-add_subdirectory(tests)
+add_subdirectory(engine)
+add_subdirectory(plugin)
 
-target_link_libraries(TinyWebSever engine)
-target_link_libraries(TinyWebSever json)
-target_link_libraries(TinyWebSever log)
-target_link_libraries(TinyWebSever plugin)
-target_link_libraries(TinyWebSever server)
-target_link_libraries(TinyWebSever socket)
-target_link_libraries(TinyWebSever system)
-target_link_libraries(TinyWebSever task)
-target_link_libraries(TinyWebSever thread)
-target_link_libraries(TinyWebSever utility)
-target_link_libraries(TinyWebSever xml)
+add_subdirectory(system)
 
+# add_subdirectory(tests)
+add_executable(TinyWebSever main.cpp)
 
-# # 找出当前目录下所有的源文件（以.cpp结尾）
-# file(GLOB_RECURSE SRCS "*.cpp")
+##编译依赖
+# target_link_libraries(system log utility engine)
 
-# # 编译主程序
-# set(SRC_MAIN "main.cpp")
-# add_executable(main ${SRC_MAIN} ${SRCS})
+##
+target_link_libraries(TinyWebSever PUBLIC system log utility server)
+
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
@@ -58,3 +50,4 @@ add_library(userplugin SHARED ${SRC_PLUGIN_USER})
 # 编译插件 echo
 set(SRC_PLUGIN_ECHO "plugin/EchoPlugin.cpp" "log/log.cpp" "system/system.cpp")
 add_library(echoplugin SHARED ${SRC_PLUGIN_ECHO})
+

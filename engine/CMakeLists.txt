@@ -8,3 +8,6 @@ aux_source_directory(${CURRENT_DIR} CURRENT_FILES)
 add_library(engine ${CURRENT_FILES})
 # 任何链接这个库的都可以看到头文件
 target_include_directories(engine PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+
+#链接依赖的库
+# target_link_libraries(engine )
