@@ -5,6 +5,6 @@ get_filename_component(CURRENT_DIR "${CMAKE_CURRENT_LIST_DIR}" ABSOLUTE)
 aux_source_directory(${CURRENT_DIR} CURRENT_FILES)
 
 # 将源文件添加到库中
-add_library(log ${CURRENT_FILES})
+add_library(logger ${CURRENT_FILES})
 # 任何链接这个库的都可以看到头文件
-target_include_directories(log PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+target_include_directories(logger PUBLIC ${CMAKE_CURRENT_LIST_DIR})

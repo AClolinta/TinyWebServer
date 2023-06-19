@@ -26,7 +26,7 @@ add_executable(TinyWebSever main.cpp)
 target_link_libraries(TinyWebSever
   engine
   json
-  log
+  logger
   plugin
   server
   socket

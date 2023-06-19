@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 13:29:53
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 04:05:00
+ * @LastEditTime: 2023-06-19 07:32:21
  * @FilePath: /TinyWebServer/engine/WorkFlow.hpp
  * @Description: 工作流
  */
@@ -28,7 +28,7 @@ class WorkFlow {
     map<string, Work*> m_works;
 
    public:
-    WorkFlow(/* args */);
+    WorkFlow(/* args */) = default;
     ~WorkFlow();
 
    public:

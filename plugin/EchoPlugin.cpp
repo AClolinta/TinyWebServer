@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-06-16 03:35:32
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-16 04:05:21
+ * @LastEditTime: 2023-06-19 07:41:11
  * @FilePath: /TinyWebServer/plugin/EchoPlugin.cpp
  * @Description:  EchoPlugin 的实现
  *  */
@@ -11,7 +11,7 @@
 using namespace aclolinta::engine;
 using namespace aclolinta::plugin;
 
-#include "../log/log.hpp"
+#include "../logger/log.hpp"
 using namespace aclolinta::logger;
 
 #include "../utility/Singleton.hpp"

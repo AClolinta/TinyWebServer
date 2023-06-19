@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-11 03:57:23
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 04:19:41
+ * @LastEditTime: 2023-06-19 07:26:02
  * @FilePath: /TinyWebServer/utility/Singleton.hpp
  * @Description: C++11标准的线程安全的单例模板
  * */
@@ -17,9 +17,9 @@ namespace utility {
 template <typename T>
 class Singleton {
    public:
-    static T &Getinstance() {
+    static T *Getinstance() {
         std::call_once(m_onceFlag, []() { m_instance = new T(); });
-        return *m_instance;
+        return m_instance;
     }
 
     // static void Init() { m_instance = new T(); }

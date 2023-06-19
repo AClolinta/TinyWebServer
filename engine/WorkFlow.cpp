@@ -2,23 +2,25 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-05 12:19:28
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-16 09:21:42
+ * @LastEditTime: 2023-06-19 07:36:43
  * @FilePath: /TinyWebServer/engine/WorkFlow.cpp
  * @Description: 从XML中读取配置并运行插件
  * */
 #include "WorkFlow.hpp"
 
-#include "../log/log.hpp"
-#include "Context.hpp"
+#include "../logger/log.hpp"
 using namespace aclolinta::logger;
 
 #include "../utility/Singleton.hpp"
+using namespace aclolinta::utility;
+
+#include "Context.hpp"
 #include "Plugin.hpp"
 #include "PluginHelper.hpp"
-using namespace aclolinta::utility;
+
 using namespace aclolinta::engine;
 
-WorkFlow::WorkFlow(){}
+// WorkFlow::WorkFlow() = default;
 
 WorkFlow::~WorkFlow() {
     for (auto it = m_works.begin(); it != m_works.end(); ++it) {
