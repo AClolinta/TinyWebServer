@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 12:06:35
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 09:59:10
+ * @LastEditTime: 2023-06-19 12:04:32
  * @FilePath: /TinyWebServer/utility/ObjectPool.hpp
  * @Description:  对象池
  *  */
@@ -10,8 +10,8 @@
 
 #include <list>
 
-#include "../thread/AutoLock.hpp"
-#include "../thread/Mutex.hpp"
+#include "AutoLock.hpp"
+#include "Mutex.hpp"
 
 using namespace aclolinta::thread;
 

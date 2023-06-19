@@ -2,14 +2,14 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:22:02
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 07:40:07
+ * @LastEditTime: 2023-06-19 12:06:59
  * @FilePath: /TinyWebServer/thread/ThreadPool.cpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
  * 进行设置: 线程池的实现
  * */
 #include "ThreadPool.hpp"
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 #include "WorkThread.hpp"
 
 using namespace aclolinta::logger;

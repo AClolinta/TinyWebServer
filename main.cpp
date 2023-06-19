@@ -2,23 +2,23 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-06-19 09:39:48
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 11:29:59
+ * @LastEditTime: 2023-06-19 12:20:55
  * @FilePath: /TinyWebServer/main.cpp
  * @Description:  */
 #include <iostream>
 
-#include "logger/log.hpp"
+#include "log.hpp"
 
 using namespace aclolinta::logger;
 
-#include "system/system.hpp"
+#include "system.hpp"
 using namespace aclolinta::system;
 
-#include "utility/Singleton.hpp"
-#include "utility/iniFile.hpp"
+#include "Singleton.hpp"
+#include "iniFile.hpp"
 using namespace aclolinta::utility;
 
-#include "server/Server.hpp"
+#include "Server.hpp"
 using namespace aclolinta::server;
 
 int main() {

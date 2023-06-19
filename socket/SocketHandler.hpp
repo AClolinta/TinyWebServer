@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 12:05:40
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-04 13:10:41
+ * @LastEditTime: 2023-06-19 12:08:05
  * @FilePath: /TinyWebServer/socket/SocketHandler.hpp
  * @Description: 基于事件轮询模型的 Socket 服务器
  *  */
@@ -12,16 +12,16 @@
 #include <string>
 #include <string_view>
 
-#include "../utility/ObjectPool.hpp"
+#include "ObjectPool.hpp"
 #include "EventPoller.hpp"
 #include "Socket.hpp"
 
 using namespace aclolinta::utility;
 
-#include "../thread/Mutex.hpp"
+#include "Mutex.hpp"
 using namespace aclolinta::thread;
 
-#include "../task/Task.hpp"
+#include "Task.hpp"
 using namespace aclolinta::task;
 
 namespace aclolinta {

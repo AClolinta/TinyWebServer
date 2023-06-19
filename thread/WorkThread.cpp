@@ -2,18 +2,18 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-31 02:34:47
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 07:40:13
+ * @LastEditTime: 2023-06-19 12:06:35
  * @FilePath: /TinyWebServer/thread/WorkerThread.cpp
  * @Description: 具体的工作线程类
  *  */
 #include "WorkThread.hpp"
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
-#include "../utility/Singleton.hpp"
+#include "Singleton.hpp"
 using namespace aclolinta::utility;
 
-#include "../task/Task.hpp"
+#include "Task.hpp"
 using namespace aclolinta::task;
 
 #include "ThreadPool.hpp"

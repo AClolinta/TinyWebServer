@@ -11,10 +11,10 @@
 #include "PluginHelper.hpp"
 using namespace aclolinta::engine;
 
-#include "../utility/Singleton.hpp"
+#include "Singleton.hpp"
 using namespace aclolinta::utility;
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
 
 Work::Work() : m_name(""), m_switch(false) {}

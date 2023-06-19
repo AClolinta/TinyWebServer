@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../engine/Plugin.hpp"
+#include "Plugin.hpp"
 
 using namespace aclolinta::engine;
 

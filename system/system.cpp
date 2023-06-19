@@ -17,14 +17,14 @@ using namespace aclolinta::system;
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "../utility/Singleton.hpp"
-#include "../utility/iniFile.hpp"
+#include "Singleton.hpp"
+#include "iniFile.hpp"
 using namespace aclolinta::utility;
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
 
-#include "../engine/WorkFlow.hpp"
+#include "WorkFlow.hpp"
 using namespace aclolinta::engine;
 
 System::System() {}

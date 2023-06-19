@@ -16,8 +16,8 @@
 using std::string;
 using std::string_view;
 
-#include "../xml/Document.hpp"
-#include "../xml/Element.hpp"
+#include "Document.hpp"
+#include "Element.hpp"
 using namespace aclolinta::xml;
 
 namespace aclolinta {

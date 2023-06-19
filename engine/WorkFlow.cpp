@@ -8,10 +8,10 @@
  * */
 #include "WorkFlow.hpp"
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
 
-#include "../utility/Singleton.hpp"
+#include "Singleton.hpp"
 using namespace aclolinta::utility;
 
 #include "Context.hpp"

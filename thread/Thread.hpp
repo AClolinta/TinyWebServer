@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-27 03:40:47
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-04-03 13:55:04
+ * @LastEditTime: 2023-06-19 12:06:58
  * @FilePath: /TinyWebServer/thread/Thread.hpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
  * 进行设置: Thread的基类 */
@@ -11,7 +11,7 @@
 
 #include "Condition.hpp"
 #include "Mutex.hpp"
-#include "../task/Task.hpp"
+#include "Task.hpp"
 
 using namespace aclolinta::task;
 

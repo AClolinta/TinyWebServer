@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-01 12:16:59
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-05 09:12:07
+ * @LastEditTime: 2023-06-19 12:11:34
  * @FilePath: /TinyWebServer/engine/PluginHelper.cpp
  * @Description: 插件辅助工具
  
@@ -10,13 +10,13 @@
 #include "PluginHelper.hpp"
 using namespace aclolinta::engine;
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
 
-#include "../utility/Singleton.hpp"
+#include "Singleton.hpp"
 using namespace aclolinta::utility;
 
-#include "../system/system.hpp"
+#include ".system.hpp"
 using namespace aclolinta::system;
 
 PluginHelper::PluginHelper(/* args */) {}

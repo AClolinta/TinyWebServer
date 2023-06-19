@@ -11,7 +11,7 @@
 using namespace aclolinta::engine;
 using namespace aclolinta::plugin;
 
-#include "../json/json.hpp"
+#include "json.hpp"
 
 using namespace aclolinta::json;
 
