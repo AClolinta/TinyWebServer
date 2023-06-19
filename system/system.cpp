@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-13 01:59:50
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 07:39:10
+ * @LastEditTime: 2023-06-19 09:58:35
  * @FilePath: /TinyWebServer/system/system.cpp
  * @Description: 核心部分
  * */
@@ -69,7 +69,7 @@ std::string System::GetRootPath() {
     memset(path, 0, 1024);
     ssize_t cnt = readlink("/proc/self/exe", path, sizeof(path));
 
-    if (cnt < 0 || cnt >= sizeof(path)) {
+    if (cnt < 0 || cnt >= (ssize_t)sizeof(path)) {
         return "";  // 异常
     }
 

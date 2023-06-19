@@ -246,7 +246,7 @@ bool Parser::isMulitEscape(size_t pos) {
     // 处理多个斜杠的情况
     size_t end_pos = pos;
     while (m_str[pos] == '\\') --pos;
-    return (end_pos - pos) & 1 == 0;  // 偶数个[\]就抵消了
+    return ((end_pos - pos) & 1) == 0;  // 偶数个[\]就抵消了
 }
 
 bool Parser::isBoolType() {
