@@ -3,7 +3,7 @@
 add_executable(log_test log_test.cpp)
 add_executable(json_test json_test.cpp)
 
-target_link_libraries(log_test PUBLIC log)
+target_link_libraries(log_test PUBLIC logger)
 target_link_libraries(json_test PUBLIC json)
 
 add_test(

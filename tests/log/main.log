@@ -6,3 +6,13 @@
 2023-03-11 03:50:02 INFO /home/ac/TinyWebServer/tests/json_test.cpp:40 {"code":0,"data":{"channel_id":0,"channel_name":"","cover":"","ctype":0,"notify":false,"subscribed_count":0},"message":"0","ttl":1}
 
 2023-03-11 03:50:12 INFO /home/ac/TinyWebServer/tests/json_test.cpp:40 {"code":0,"data":{"channel_id":0,"channel_name":"","cover":"","ctype":0,"notify":false,"subscribed_count":0},"message":"0","ttl":1}
+
+2023-06-19 10:54:10 INFO /home/ac/TinyWebServer/tests/json_test.cpp:40 {"code":0,"data":{"channel_id":0,"channel_name":"","cover":"","ctype":0,"notify":false,"subscribed_count":0},"message":"0","ttl":1}
+
+2023-06-19 10:56:43 INFO /home/ac/TinyWebServer/tests/json_test.cpp:40 {"code":0,"data":{"channel_id":0,"channel_name":"","cover":"","ctype":0,"notify":false,"subscribed_count":0},"message":"0","ttl":1}
+
+2023-06-19 10:58:36 ERROR /home/ac/TinyWebServer/tests/log_test.cpp:17 NO BUG TEST
+
+2023-06-19 11:06:21 ERROR /home/ac/TinyWebServer/tests/log_test.cpp:17 NO BUG TEST
+
+2023-06-19 11:06:30 INFO /home/ac/TinyWebServer/tests/json_test.cpp:40 {"code":0,"data":{"channel_id":0,"channel_name":"","cover":"","ctype":0,"notify":false,"subscribed_count":0},"message":"0","ttl":1}

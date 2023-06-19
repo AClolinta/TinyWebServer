@@ -2,3 +2,5 @@
 SetProxy.sh
 .gitignore
 UnSetProxy.sh
+tests/log/main.log
+tests/log/main.log
