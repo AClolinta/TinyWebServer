@@ -10,7 +10,7 @@
 #include "PluginHelper.hpp"
 using namespace aclolinta::engine;
 
-#include "../log/log.hpp"
+#include "../logger/log.hpp"
 using namespace aclolinta::logger;
 
 #include "../utility/Singleton.hpp"
