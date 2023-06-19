@@ -1,6 +1,13 @@
+/*
+ * @Author: AClolinta AClolinta@gmail.com
+ * @Date: 2023-06-19 09:39:48
+ * @LastEditors: AClolinta AClolinta@gmail.com
+ * @LastEditTime: 2023-06-19 09:53:38
+ * @FilePath: /TinyWebServer/main.cpp
+ * @Description:  */
 #include <iostream>
 
-#include "log/log.hpp"
+#include "logger/log.hpp"
 
 using namespace aclolinta::logger;
 
@@ -15,8 +22,8 @@ using namespace aclolinta::utility;
 using namespace aclolinta::server;
 
 int main() {
-    System* sys = Singleton<System>::Getinstance();
-    sys->Init();
+    // System* sys = Singleton<System>::Getinstance();
+    // sys->Init();
 
     // IniFile* ini = Singleton<IniFile>::Getinstance();
     // const std::string& ip = (*ini)["server"]["ip"];
