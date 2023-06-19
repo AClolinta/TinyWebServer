@@ -6,6 +6,7 @@ aux_source_directory(${CURRENT_DIR} CURRENT_FILES)
 
 # 将源文件添加到库中
 add_library(utility ${CURRENT_FILES})
+
 # 任何链接这个库的都可以看到头文件
 target_include_directories(utility PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 
