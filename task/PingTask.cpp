@@ -2,20 +2,20 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-05 13:40:41
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 07:39:32
+ * @LastEditTime: 2023-06-20 10:24:56
  * @FilePath: /TinyWebServer/task/PingTask.cpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 #include "PingTask.hpp"
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
 
-#include "../utility/Singleton.hpp"
+#include "Singleton.hpp"
 
 using namespace aclolinta::utility;
 
-#include "../socket/SocketHandler.hpp"
+#include "SocketHandler.hpp"
 using namespace aclolinta::socket;
 
 #include "cstdio"

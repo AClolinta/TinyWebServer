@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-13 01:59:50
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 09:58:35
+ * @LastEditTime: 2023-06-20 10:24:27
  * @FilePath: /TinyWebServer/system/system.cpp
  * @Description: 核心部分
  * */
@@ -17,14 +17,14 @@ using namespace aclolinta::system;
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "../utility/Singleton.hpp"
-#include "../utility/iniFile.hpp"
+#include "Singleton.hpp"
+#include "iniFile.hpp"
 using namespace aclolinta::utility;
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
 
-#include "../engine/WorkFlow.hpp"
+#include "WorkFlow.hpp"
 using namespace aclolinta::engine;
 
 System::System() {}

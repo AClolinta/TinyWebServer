@@ -2,13 +2,13 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-29 12:34:49
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-05-05 13:42:35
+ * @LastEditTime: 2023-06-20 10:25:22
  * @FilePath: /TinyWebServer/task/Task.cpp
  * @Description: Task,任务类
  */
 #include "Task.hpp"
 
-#include "../thread/AutoLock.hpp"
+#include "AutoLock.hpp"
 
 using namespace aclolinta::task;
 

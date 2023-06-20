@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-06-16 09:05:11
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-16 09:14:18
+ * @LastEditTime: 2023-06-20 10:21:49
  * @FilePath: /TinyWebServer/plugin/UserPlugin.cpp
  * @Description:
  */
@@ -11,7 +11,7 @@
 using namespace aclolinta::engine;
 using namespace aclolinta::plugin;
 
-#include "../json/json.hpp"
+#include "json.hpp"
 
 using namespace aclolinta::json;
 

@@ -2,16 +2,16 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-07 03:33:31
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-16 02:56:20
+ * @LastEditTime: 2023-06-20 10:26:15
  * @FilePath: /TinyWebServer/task/WorkTask.hpp
  * @Description: 工作任务的定义
  *  */
 #pragma once
 
-#include "../task/Task.hpp"
+#include "Task.hpp"
 using namespace aclolinta::task;
 
-#include "../socket/Socket.hpp"
+#include "Socket.hpp"
 using namespace aclolinta::socket;
 
 namespace aclolinta {

@@ -10,7 +10,7 @@
 #include "../task/Task.hpp"
 using namespace aclolinta::task;
 
-#include "../socket/Socket.hpp"
+#include "Socket.hpp"
 using namespace aclolinta::socket;
 
 namespace aclolinta {

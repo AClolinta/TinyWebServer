@@ -8,10 +8,10 @@
  * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
-#include "../json/json.cpp"
+#include "json.cpp"
 
-#include "../json/parser.cpp"
-#include "../logger/log.cpp"
+#include "parser.cpp"
+#include "log.cpp"
 
 using namespace aclolinta::logger;
 using namespace aclolinta::json;

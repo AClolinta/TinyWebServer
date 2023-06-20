@@ -7,7 +7,7 @@
  * @Description: 日志测试器
  */
 
-#include "../logger/log.cpp"
+#include "log.cpp"
 
 using namespace aclolinta::logger;
 

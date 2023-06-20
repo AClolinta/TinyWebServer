@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-05 08:05:28
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 07:36:44
+ * @LastEditTime: 2023-06-20 09:58:15
  * @FilePath: /TinyWebServer/engine/Work.cpp
  * @Description: 插件的管理和运行的实现
  */
@@ -11,10 +11,10 @@
 #include "PluginHelper.hpp"
 using namespace aclolinta::engine;
 
-#include "../utility/Singleton.hpp"
+#include "Singleton.hpp"
 using namespace aclolinta::utility;
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
 
 Work::Work() : m_name(""), m_switch(false) {}

@@ -2,14 +2,14 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-30 13:19:03
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 07:40:52
+ * @LastEditTime: 2023-06-20 10:25:21
  * @FilePath: /TinyWebServer/thread/TaskDispatcher.cpp
  * @Description:  任务分配器具体实现
  * */
 #include "TaskDispatcher.hpp"
 
-#include "../logger/log.hpp"
-#include "../utility/Singleton.hpp"
+#include "log.hpp"
+#include "Singleton.hpp"
 
 using namespace aclolinta::utility;
 using namespace aclolinta::logger;

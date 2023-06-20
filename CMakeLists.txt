@@ -2,14 +2,10 @@ cmake_minimum_required(VERSION 3.0.0)
 project(TinyWebSever VERSION 0.1.0)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_EXE_LINKER_FLAGS "-lpthread")
 set(CMAKE_CXX_FLAGS "-g -O2 -Wall -Werror -Wno-unused -ldl -fPIC")
-
-include(CTest)
-include(CPack)
-enable_testing()
 
 ##
 ## 获取当前目录
@@ -32,20 +28,36 @@ foreach(EXCLUDED_DIR ${EXCLUDED_DIRECTORIES})
 endforeach()
 
 foreach(FILE_PATH ${SOURCE_FILES})
-    message("${FILE_PATH}\n")
+    message("All File : ${FILE_PATH}")
 endforeach()
+
+##设置包含头文件的目录
+
+# 添加所有子目录到包含路径
+include_directories(${CURRENT_DIR}/json)
+include_directories(${CURRENT_DIR}/logger)
+include_directories(${CURRENT_DIR}/xml)
+include_directories(${CURRENT_DIR}/utility)
+include_directories(${CURRENT_DIR}/socket)
+include_directories(${CURRENT_DIR}/task)
+include_directories(${CURRENT_DIR}/thread)
+include_directories(${CURRENT_DIR}/server)
+include_directories(${CURRENT_DIR}/engine)
+include_directories(${CURRENT_DIR}/plugin)
+include_directories(${CURRENT_DIR}/system)
+
+# 获取所有的包含路径
+get_property(include_dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+
+# 打印包含路径
+foreach(dir ${include_dirs})
+    message("Include Directory: ${dir}")
+endforeach()
+
 
 ##可执行文件
 add_executable(TinyWebSever ${SOURCE_FILES})
 
-##链接依赖的库
-
-##头文件
-# target_include_directories(TinyWebSever PUBLIC ${CURRENT_DIR})
-
-##
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
 ## 插件编译
 #编译插件 test
@@ -60,3 +72,12 @@ set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 # set(SRC_PLUGIN_ECHO "plugin/EchoPlugin.cpp" "logger/log.cpp" "system/system.cpp")
 # add_library(echoplugin SHARED ${SRC_PLUGIN_ECHO})
 
+## 找出当前目录下所有头文件
+# file(GLOB_RECURSE INCLUDE_DIRS "*.hpp")             #出当前目录下所有以.hpp结尾的头文件,保存在变量INCLUDE_DIRS中
+# foreach(DIR ${INCLUDE_DIRS})                        #遍历目录
+#     list(FIND EXCLUDE_DIRS ${DIR} EXCLUDE_DIR_INDEX_HPP)#检查当前目录是否在排除目录列表中,保存在变量EXCLUDE_DIR_INDEX中
+#     if(EXCLUDE_DIR_INDEX_HPP EQUAL -1)                  #当前目录不在排除目录列表中
+#         set(INCLUDE ${INCLUDE} "-I${DIR}")          #将当前目录添加到INCLUDE变量中作为编译器的头文件搜索路径
+#         # message(${INCLUDE})
+#     endif()
+# endforeach()

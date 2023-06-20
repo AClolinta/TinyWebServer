@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-03 13:29:53
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 07:32:21
+ * @LastEditTime: 2023-06-20 09:58:37
  * @FilePath: /TinyWebServer/engine/WorkFlow.hpp
  * @Description: 工作流
  */
@@ -16,8 +16,8 @@
 using std::string;
 using std::string_view;
 
-#include "../xml/Document.hpp"
-#include "../xml/Element.hpp"
+#include "Document.hpp"
+#include "Element.hpp"
 using namespace aclolinta::xml;
 
 namespace aclolinta {

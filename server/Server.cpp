@@ -2,20 +2,20 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-04-04 13:47:51
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 09:43:09
+ * @LastEditTime: 2023-06-20 10:23:07
  * @FilePath: /TinyWebServer/server/Server.cpp
  * @Description: 服务器配置
  */
 #include "Server.hpp"
 using namespace aclolinta::server;
 
-#include "../utility/Singleton.hpp"
+#include "Singleton.hpp"
 using namespace aclolinta::utility;
 
-#include "../task/TaskDispatcher.hpp"
+#include "TaskDispatcher.hpp"
 using namespace aclolinta::task;
 
-#include "../socket/SocketHandler.hpp"
+#include "SocketHandler.hpp"
 using namespace aclolinta::socket;
 
 Server::Server()

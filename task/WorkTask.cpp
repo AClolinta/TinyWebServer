@@ -2,22 +2,22 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-07 03:35:51
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-19 07:39:49
+ * @LastEditTime: 2023-06-20 10:26:05
  * @FilePath: /TinyWebServer/task/WorkTask.cpp
  * @Description: 每个任务的安全性检查，随后送入
  */
 #include "WorkTask.hpp"
 
-#include "../logger/log.hpp"
+#include "log.hpp"
 using namespace aclolinta::logger;
 
-#include "../utility/Singleton.hpp"
+#include "Singleton.hpp"
 using namespace aclolinta::utility;
 
-#include "../socket/SocketHandler.hpp"
+#include "SocketHandler.hpp"
 using namespace aclolinta::socket;
 
-#include "../engine/WorkFlow.hpp"
+#include "WorkFlow.hpp"
 using namespace aclolinta::engine;
 
 #include <sstream>
