@@ -12,51 +12,51 @@ include(CPack)
 enable_testing()
 
 ##
-add_subdirectory(json)
-add_subdirectory(logger)
-add_subdirectory(xml)
-add_subdirectory(utility)
-add_subdirectory(socket)
-add_subdirectory(task)
-add_subdirectory(thread)
-add_subdirectory(server)
-add_subdirectory(engine)
-add_subdirectory(plugin)
-add_subdirectory(system)
-add_subdirectory(tests)
+## 获取当前目录
+get_filename_component(CURRENT_DIR "${CMAKE_CURRENT_LIST_DIR}" ABSOLUTE)
+message(${CURRENT_DIR})
+
+# 指定排除的目录
+set(EXCLUDED_DIRECTORIES
+    "${CURRENT_DIR}/build"
+    "${CURRENT_DIR}/plugin"
+)
+##获取文件
+file(GLOB_RECURSE SOURCE_FILES
+    "${CURRENT_DIR}/*.cpp"
+)
+##排除文件
+foreach(EXCLUDED_DIR ${EXCLUDED_DIRECTORIES})
+    file(GLOB_RECURSE EXCLUDED_FILES "${EXCLUDED_DIR}/*")
+    list(REMOVE_ITEM SOURCE_FILES ${EXCLUDED_FILES})
+endforeach()
+
+foreach(FILE_PATH ${SOURCE_FILES})
+    message("${FILE_PATH}\n")
+endforeach()
 
 ##可执行文件
-add_executable(TinyWebSever main.cpp)
+add_executable(TinyWebSever ${SOURCE_FILES})
 
-##编译依赖
+##链接依赖的库
 
-# target_link_libraries(TinyWebSever json)
-# target_link_libraries(TinyWebSever xml)
-# target_link_libraries(TinyWebSever logger)
-# target_link_libraries(TinyWebSever utility)
+##头文件
+# target_include_directories(TinyWebSever PUBLIC ${CURRENT_DIR})
 
-target_link_libraries(TinyWebSever server)
-target_link_libraries(TinyWebSever socket)
-target_link_libraries(TinyWebSever thread)
-target_link_libraries(TinyWebSever system)
-target_link_libraries(TinyWebSever task)
-
-target_link_libraries(TinyWebSever engine)
-target_link_libraries(TinyWebSever plugin)
 ##
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
 ## 插件编译
 #编译插件 test
-set(SRC_PLUGIN_TEST "plugin/TestPlugin.cpp" "json/parser.cpp" "json/json.cpp")
-add_library(testplugin SHARED ${SRC_PLUGIN_TEST})
+# set(SRC_PLUGIN_TEST "plugin/TestPlugin.cpp" "json/parser.cpp" "json/json.cpp")
+# add_library(testplugin SHARED ${SRC_PLUGIN_TEST})
 
-# 编译插件 user
-set(SRC_PLUGIN_USER "plugin/UserPlugin.cpp" "json/parser.cpp" "json/json.cpp")
-add_library(userplugin SHARED ${SRC_PLUGIN_USER})
+# # 编译插件 user
+# set(SRC_PLUGIN_USER "plugin/UserPlugin.cpp" "json/parser.cpp" "json/json.cpp")
+# add_library(userplugin SHARED ${SRC_PLUGIN_USER})
 
-# 编译插件 echo
-set(SRC_PLUGIN_ECHO "plugin/EchoPlugin.cpp" "logger/log.cpp" "system/system.cpp")
-add_library(echoplugin SHARED ${SRC_PLUGIN_ECHO})
+# # 编译插件 echo
+# set(SRC_PLUGIN_ECHO "plugin/EchoPlugin.cpp" "logger/log.cpp" "system/system.cpp")
+# add_library(echoplugin SHARED ${SRC_PLUGIN_ECHO})
 
