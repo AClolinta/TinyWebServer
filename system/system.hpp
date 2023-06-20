@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-11 03:58:53
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-16 12:49:21
+ * @LastEditTime: 2023-06-20 12:53:49
  * @FilePath: /TinyWebServer/system/system.hpp
  * @Description: System工具类
  *
@@ -18,7 +18,7 @@
 
 
 namespace aclolinta {
-namespace system {
+namespace sys {
 class System {
    private:
     /* data */

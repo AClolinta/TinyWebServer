@@ -1,13 +1,9 @@
-# 获取当前目录
-get_filename_component(CURRENT_DIR "${CMAKE_CURRENT_LIST_DIR}" ABSOLUTE)
+cmake_minimum_required(VERSION 3.0.0)
+project(sys)
 
-# 在当前目录中查找源文件
-aux_source_directory(${CURRENT_DIR} CURRENT_FILES)
+link_libraries()
+# 获取当前目录
+aux_source_directory(./ SRC)
 
 # 将源文件添加到库中
-add_library(system ${CURRENT_FILES})
-# 任何链接这个库的都可以看到头文件
-target_include_directories(system PUBLIC ${CMAKE_CURRENT_LIST_DIR})
-
-#链接log库
-# target_link_libraries(system log utility engine)
+add_library(sys ${SRC})

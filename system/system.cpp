@@ -2,14 +2,14 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-13 01:59:50
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-20 10:24:27
+ * @LastEditTime: 2023-06-20 12:53:55
  * @FilePath: /TinyWebServer/system/system.cpp
  * @Description: 核心部分
  * */
 #include "system.hpp"
 
 using namespace aclolinta;
-using namespace aclolinta::system;
+using namespace aclolinta::sys;
 
 #include <dirent.h>
 #include <sys/resource.h>
