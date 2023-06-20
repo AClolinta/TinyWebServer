@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-05-05 12:19:28
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-20 09:58:27
+ * @LastEditTime: 2023-06-20 10:58:23
  * @FilePath: /TinyWebServer/engine/WorkFlow.cpp
  * @Description: 从XML中读取配置并运行插件
  * */
@@ -36,8 +36,8 @@ bool WorkFlow::Load(string_view workinfo) {
     Element root_ = doc_.parse();
     info("LOAD WORKFLOW SUCCESS: %s", workinfo);
     for (auto it = root_.begin(); it != root_.end(); ++it) {
-        const string& name = it->attr("name");
-        const string& flag = it->attr("switch");
+        const string& name = it->Attr("name");
+        const string& flag = it->Attr("switch");
         Work* work = new Work();
         work->SetName(name);
         if (flag == "on") {
@@ -80,19 +80,19 @@ bool WorkFlow::Run(string_view work, string_view input, string& output) {
 
 bool WorkFlow::LoadPlugin(Work* work, Element& elem) {
     for (auto it = elem.begin(); it != elem.end(); ++it) {
-        if (it->name() != "plugin") {
+        if (it->Name() != "plugin") {
             errorr("plugin %s elem: %s is not supported",
-                   it->attr("name").c_str(), it->name().c_str());
+                   it->Attr("name").c_str(), it->Name().c_str());
             return false;
         }
-        const string& name = it->attr("name");
+        const string& name = it->Attr("name");
         create_func func =
             (create_func)Singleton<PluginHelper>::Getinstance()->Get(name,
                                                                      "create");
         Plugin* plugin = func();
         plugin->SetName(name);
 
-        const string& flag = it->attr("switch");
+        const string& flag = it->Attr("switch");
         if (flag == "on")
             plugin->SetSwitch(true);
         else if (flag == "off")

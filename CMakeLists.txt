@@ -4,18 +4,19 @@ project(TinyWebSever VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 20)
 
-set(CMAKE_EXE_LINKER_FLAGS "-lpthread")
-set(CMAKE_CXX_FLAGS "-g -O2 -Wall -Werror -Wno-unused -ldl -fPIC")
+# set(CMAKE_EXE_LINKER_FLAGS "-lpthread")
+# set(CMAKE_CXX_FLAGS "-g -O2 -Wall -Werror -Wno-unused -ldl -fPIC")
 
 ##
 ## 获取当前目录
 get_filename_component(CURRENT_DIR "${CMAKE_CURRENT_LIST_DIR}" ABSOLUTE)
 message(${CURRENT_DIR})
 
-# 指定排除的目录
+## 指定排除的目录
 set(EXCLUDED_DIRECTORIES
     "${CURRENT_DIR}/build"
     "${CURRENT_DIR}/plugin"
+    "${CURRENT_DIR}/tests"
 )
 ##获取文件
 file(GLOB_RECURSE SOURCE_FILES
@@ -30,6 +31,8 @@ endforeach()
 foreach(FILE_PATH ${SOURCE_FILES})
     message("All File : ${FILE_PATH}")
 endforeach()
+
+
 
 ##设置包含头文件的目录
 
@@ -54,10 +57,36 @@ foreach(dir ${include_dirs})
     message("Include Directory: ${dir}")
 endforeach()
 
+##
+
+# add_subdirectory(json)
+# add_subdirectory(logger)
+# add_subdirectory(xml)
+# add_subdirectory(utility)
+# add_subdirectory(socket)
+# add_subdirectory(task)
+# add_subdirectory(thread)
+# add_subdirectory(server)
+# add_subdirectory(engine)
+# add_subdirectory(plugin)
+# add_subdirectory(system)
 
 ##可执行文件
+# add_executable(TinyWebSever main.cpp)
 add_executable(TinyWebSever ${SOURCE_FILES})
 
+##
+# target_link_libraries(TinyWebSever logger)
+# target_link_libraries(TinyWebSever utility)
+# target_link_libraries(TinyWebSever xml)
+# target_link_libraries(TinyWebSever json)
+# target_link_libraries(TinyWebSever server)
+# target_link_libraries(TinyWebSever task)
+# target_link_libraries(TinyWebSever thread)
+# target_link_libraries(TinyWebSever socket)
+# target_link_libraries(TinyWebSever engine)
+# target_link_libraries(TinyWebSever plugin)
+# target_link_libraries(TinyWebSever system)
 
 ## 插件编译
 #编译插件 test
@@ -72,12 +101,3 @@ add_executable(TinyWebSever ${SOURCE_FILES})
 # set(SRC_PLUGIN_ECHO "plugin/EchoPlugin.cpp" "logger/log.cpp" "system/system.cpp")
 # add_library(echoplugin SHARED ${SRC_PLUGIN_ECHO})
 
-## 找出当前目录下所有头文件
-# file(GLOB_RECURSE INCLUDE_DIRS "*.hpp")             #出当前目录下所有以.hpp结尾的头文件,保存在变量INCLUDE_DIRS中
-# foreach(DIR ${INCLUDE_DIRS})                        #遍历目录
-#     list(FIND EXCLUDE_DIRS ${DIR} EXCLUDE_DIR_INDEX_HPP)#检查当前目录是否在排除目录列表中,保存在变量EXCLUDE_DIR_INDEX中
-#     if(EXCLUDE_DIR_INDEX_HPP EQUAL -1)                  #当前目录不在排除目录列表中
-#         set(INCLUDE ${INCLUDE} "-I${DIR}")          #将当前目录添加到INCLUDE变量中作为编译器的头文件搜索路径
-#         # message(${INCLUDE})
-#     endif()
-# endforeach()

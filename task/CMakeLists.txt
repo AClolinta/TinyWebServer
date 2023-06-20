@@ -10,4 +10,3 @@ add_library(task ${CURRENT_FILES})
 target_include_directories(task PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 
 #依赖
-# target_link_libraries(task PUBLIC thread)

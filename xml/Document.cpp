@@ -70,7 +70,7 @@ Element Document::parse() {
 
         // parse elem's name
         name = parse_element_name();
-        elem.name(name);
+        elem.Name(name);
 
         skip_white_spaces();
 
@@ -105,18 +105,18 @@ Element Document::parse() {
                 } else {
                     // parse child element
                     Element child = parse();
-                    elem.append(child);
+                    elem.Append(child);
                 }
             } else if (m_str[m_idx] == '>') {
                 m_idx++;
                 string text = parse_element_text();
                 skip_white_spaces();
                 if (text != "") {
-                    elem.text(text);
+                    elem.Text(text);
                 } else {
                     // parse child element
                     Element child = parse();
-                    elem.append(child);
+                    elem.Append(child);
                 }
             } else {
                 // parse elem's attr
@@ -129,7 +129,7 @@ Element Document::parse() {
                 }
                 m_idx++;
                 string val = parse_element_attr_val();
-                elem.attr(key, val);
+                elem.Attr(key, val);
             }
 
             skip_white_spaces();

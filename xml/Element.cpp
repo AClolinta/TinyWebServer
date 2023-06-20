@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-14 12:05:23
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-20 10:27:25
+ * @LastEditTime: 2023-06-20 10:43:58
  * @FilePath: /TinyWebServer/xml/Element.cpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置
  * 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
@@ -12,26 +12,26 @@
 #include <sstream>
 using namespace aclolinta::xml;
 
-Element::Element() {}
+Element::Element()= default;
 
 Element::Element(const string& name) : m_name(name) {}
 
 Element::Element(const string& name, const string& text)
     : m_name(name), m_text(text) {}
 
-Element::~Element() {}
+Element::~Element() = default;
 
-const string& Element::name() const { return m_name; }
+const string& Element::Name() const { return m_name; }
 
-const string& Element::text() const { return m_text; }
+const string& Element::Text() const { return m_text; }
 
-void Element::name(const string& name) { m_name = name; }
+void Element::Name(const string& name) { m_name = name; }
 
-void Element::text(const string& text) { m_text = text; }
+void Element::Text(const string& text) { m_text = text; }
 
-string& Element::attr(const string& key) { return m_attrs[key]; }
+string& Element::Attr(const string& key) { return m_attrs[key]; }
 
-void Element::attr(const string& key, const string& value) {
+void Element::Attr(const string& key, const string& value) {
     if (value != "") {
         m_attrs[key] = value;
         return;
@@ -54,14 +54,14 @@ const Element& Element::operator[](int index) const {
 const Element& Element::operator[](const string& name) const {
     for (Element::const_iterator it = m_children.begin();
          it != m_children.end(); it++) {
-        if ((*it).name() == name) {
+        if ((*it).Name() == name) {
             return (*it);
         }
     }
     return null();
 }
 
-void Element::append(const Element& child) { m_children.push_back(child); }
+void Element::Append(const Element& child) { m_children.push_back(child); }
 
 int Element::size() { return m_children.size(); }
 

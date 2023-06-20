@@ -2,7 +2,7 @@
  * @Author: AClolinta AClolinta@gmail.com
  * @Date: 2023-03-14 12:05:23
  * @LastEditors: AClolinta AClolinta@gmail.com
- * @LastEditTime: 2023-06-17 03:53:58
+ * @LastEditTime: 2023-06-20 10:43:42
  * @FilePath: /TinyWebServer/xml/Element.hpp
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -25,22 +25,22 @@ class Element {
     ~Element();
 
     // get element's name
-    const string& name() const;
+    const string& Name() const;
 
     // set element's name
-    void name(const string& name);
+    void Name(const string& name);
 
     // get element's text
-    const string& text() const;
+    const string& Text() const;
 
     // set element's text
-    void text(const string& text);
+    void Text(const string& text);
 
     // get element's attr
-    string& attr(const string& key);
+    string& Attr(const string& key);
 
     // set element's attr
-    void attr(const string& key, const string& value);
+    void Attr(const string& key, const string& value);
 
     // get child element by index
     const Element& operator[](int index) const;
@@ -49,7 +49,7 @@ class Element {
     const Element& operator[](const string& name) const;
 
     // append child element
-    void append(const Element& child);
+    void Append(const Element& child);
 
     // get numbers of the child
     int size();
