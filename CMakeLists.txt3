@@ -1,0 +1,89 @@
+cmake_minimum_required(VERSION 3.0.0)
+project(TinyWebSever VERSION 0.1.0)
+
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD 20)
+
+set(CMAKE_EXE_LINKER_FLAGS "-lpthread")
+
+##
+message("CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+message("CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+
+##
+# add_subdirectory(json)
+# add_subdirectory(log)
+# add_subdirectory(xml)
+# add_subdirectory(utility)
+# add_subdirectory(socket)
+# add_subdirectory(task)
+# add_subdirectory(thread)
+# add_subdirectory(server)
+# add_subdirectory(engine)
+# add_subdirectory(plugin)
+# add_subdirectory(system)
+# add_subdirectory(tests)
+
+# get_directory_property(subdirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} SUBDIRECTORIES)
+# foreach(subdir ${subdirs})
+#     message("Subdirectory: ${subdir}")
+# endforeach()
+
+##
+
+set(EXCLUDE_DIRS "config" "tests" "build")          #需要排除的目录
+set(SOURCE_DIR "/home/ac/TinyWebServer")
+#找出当前目录下，所有的源文件（以.cpp结尾）
+file(GLOB_RECURSE SRCS_CPP "*.cpp")
+
+##
+file(GLOB_RECURSE CPP_SOURCES "${SOURCE_DIR}/*.cpp")
+foreach(source ${CPP_SOURCES})
+    # 使用正则表达式匹配，排除build目录
+    string(REGEX MATCH "build" match ${source})
+    if(NOT match)
+        # 添加源文件到项目中
+        set(SOURCES ${SOURCES} ${source})
+    endif()
+endforeach()
+
+message(${SOURCES})
+
+
+## 确定cpp源文件对应的目标文件
+foreach(SRC ${SRCS})
+    get_filename_component(FILENAME ${SRC} NAME_WE) #获取文件不包含扩展名的名称
+    set(OBJ "${FILENAME}.o")                        #目标文件名设置为源文件名加上.o扩展名，并保存在变量OBJ中
+    # message(${OBJ})
+    set(OBJS ${OBJS} ${OBJ})                        #将目标文件名添加到OBJS变量中
+endforeach()
+
+message(${OBJS})
+
+## 找出当前目录下所有头文件
+file(GLOB_RECURSE INCLUDE_DIRS "*.hpp")             #出当前目录下所有以.hpp结尾的头文件,保存在变量INCLUDE_DIRS中
+foreach(DIR ${INCLUDE_DIRS})                        #遍历目录
+    list(FIND EXCLUDE_DIRS ${DIR} EXCLUDE_DIR_INDEX_HPP)#检查当前目录是否在排除目录列表中,保存在变量EXCLUDE_DIR_INDEX中
+    if(EXCLUDE_DIR_INDEX_HPP EQUAL -1)                  #当前目录不在排除目录列表中
+        set(INCLUDE ${INCLUDE} "-I${DIR}")          #将当前目录添加到INCLUDE变量中作为编译器的头文件搜索路径
+        # message(${INCLUDE})
+    endif()
+endforeach()
+
+
+## 主程序
+
+add_executable(TinyWebSever main.cpp ${OBJS})
+
+## 链接
+target_include_directories(TinyWebSever PRIVATE ${INCLUDE})
+target_link_libraries(TinyWebSever PRIVATE pthread)
+
+
+
+## 添加clean命令
+add_custom_target(clean-all
+    COMMAND ${CMAKE_COMMAND} -E remove ${OBJS}
+    COMMAND ${CMAKE_COMMAND} -E remove ${CMAKE_BINARY_DIR}/main
+    COMMAND echo "Clean completed."
+)

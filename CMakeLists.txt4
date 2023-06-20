@@ -12,23 +12,23 @@ include(CPack)
 enable_testing()
 
 ##
-add_subdirectory(json)
-add_subdirectory(logger)
-add_subdirectory(xml)
-add_subdirectory(utility)
-add_subdirectory(socket)
-add_subdirectory(task)
-add_subdirectory(thread)
-add_subdirectory(server)
-add_subdirectory(engine)
-add_subdirectory(plugin)
-add_subdirectory(system)
-add_subdirectory(tests)
+# add_subdirectory(json)
+# add_subdirectory(logger)
+# add_subdirectory(xml)
+# add_subdirectory(utility)
+# add_subdirectory(socket)
+# add_subdirectory(task)
+# add_subdirectory(thread)
+# add_subdirectory(server)
+# add_subdirectory(engine)
+# add_subdirectory(plugin)
+# add_subdirectory(system)
+# add_subdirectory(tests)
 
 ##可执行文件
 add_executable(TinyWebSever main.cpp)
 
-##编译依赖
+##链接依赖的库
 
 target_link_libraries(TinyWebSever json)
 target_link_libraries(TinyWebSever xml)
