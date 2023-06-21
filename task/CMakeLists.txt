@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.0)
 project(task)
 #
 
-link_libraries(logger thread socket engine)
+link_libraries(logger thread socket engine xml)
 # 获取当前目录
 aux_source_directory(./ SRC)
 

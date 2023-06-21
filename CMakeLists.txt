@@ -72,7 +72,7 @@ add_subdirectory(engine)
 add_subdirectory(system)
 
 ##链接
-link_libraries(logger utility xml json server task thread socket engine sys)
+link_libraries(xml logger utility json server task thread socket engine sys)
 
 ##可执行文件
 add_executable(TinyWebSever main.cpp)

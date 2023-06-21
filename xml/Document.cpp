@@ -1,3 +1,5 @@
+
+
 #include "Document.hpp"
 
 #include <ctype.h>
